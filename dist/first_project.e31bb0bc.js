@@ -23076,12 +23076,54 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"src/arithmetic.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Arithmetic = function Arithmetic() {
+  _classCallCheck(this, Arithmetic);
+
+  this.addition = function (a, b) {
+    return a + b;
+  };
+
+  this.subtraction = function (a, b) {
+    return a - b;
+  };
+
+  this.multiplication = function (a, b) {
+    return a * b;
+  };
+
+  this.division = function (a, b) {
+    return a / b;
+  };
+
+  this.exponentiation = function (a, b) {
+    return Math.pow(a, b);
+  };
+
+  this.evolution = function (a, b) {
+    return Math.pow(a, 1 / b);
+  };
+};
+
+var _default = Arithmetic;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _arithmetic = _interopRequireDefault(require("~/src/arithmetic"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23111,15 +23153,22 @@ function (_Component) {
   _inherits(App, _Component);
 
   function App(props) {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
+    _this.state = {
+      arithmetic: new _arithmetic.default()
+    };
+    return _this;
   }
 
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Hello, World!"));
+      var arithmetic = this.state.arithmetic;
+      return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Hello, World!"), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0421\u043B\u043E\u0436\u0435\u043D\u0438\u0435"), _react.default.createElement("p", null, "225 + 333 = ", arithmetic.addition(225, 333)), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0412\u044B\u0447\u0438\u0442\u0430\u043D\u0438\u0435"), _react.default.createElement("p", null, "333 - 179 = ", arithmetic.subtraction(333, 179)), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0423\u043C\u043D\u043E\u0436\u0435\u043D\u0438\u0435"), _react.default.createElement("p", null, "225 * 6 = ", arithmetic.multiplication(225, 6)), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0414\u0435\u043B\u0435\u043D\u0438\u0435"), _react.default.createElement("p", null, "570 / 3 = ", arithmetic.division(570, 3)), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0412\u043E\u0437\u0432\u0435\u0434\u0435\u043D\u0438\u0435 \u0432 \u0441\u0442\u0435\u043F\u0435\u043D\u044C"), _react.default.createElement("p", null, "33 ** 3 = ", arithmetic.exponentiation(33, 3)), _react.default.createElement("br", null), _react.default.createElement("h3", null, "\u0418\u0437\u0432\u043B\u0435\u0447\u0435\u043D\u0438\u0435 \u043A\u043E\u0440\u043D\u044F"), _react.default.createElement("p", null, "144 ** (1 / 2) = ", arithmetic.evolution(144, 2)));
     }
   }]);
 
@@ -23127,7 +23176,7 @@ function (_Component) {
 }(_react.Component);
 
 _reactDom.default.render(_react.default.createElement(App, null), document.getElementById('root'));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js"}],"../../.nvm/versions/node/v10.7.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","~/src/arithmetic":"src/arithmetic.js"}],"../../.nvm/versions/node/v10.7.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -23154,7 +23203,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64825" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57063" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
